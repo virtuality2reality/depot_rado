@@ -1,0 +1,14 @@
+.redcar
+.bundle
+rerun.txt
+db/*.sqlite3
+log/*.log
+*.log
+tmp/**/*
+*~
+*org.eclipse.core*
+.DS_Store
+public/stylesheets/compiled
+public/system
+coverage
+.sass*
