@@ -29,3 +29,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :development do 
+  gem "wirble" 
+  gem "hirb" 
+  gem "awesome_print", :require => "ap" 
+  gem "interactive_editor" 
+end
