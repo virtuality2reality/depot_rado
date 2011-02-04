@@ -14,6 +14,14 @@
   </div>
   <div id="columns" >
     <div id="side" >
+
+      <div id="cart" >
+        <% if @cart %>
+          <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
+            <%= render @cart %>
+          <% end %>
+        <% end %>
+      </div>
       <p style="color:#fff;">Displayed at : <%= @current_time %></p>
       <a href="http://www...." >Home</a><br />
       <a href="http://www..../faq" >Questions</a><br />

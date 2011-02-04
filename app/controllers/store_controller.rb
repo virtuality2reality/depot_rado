@@ -1,6 +1,7 @@
 class StoreController < ApplicationController
   def index
     @products = Product.all
+    @cart = current_cart
     @current_time = Time.now.strftime("%H:%M:%S %d/%m/%y ")
     if session[:counter].nil?
       session[:counter] = 0
