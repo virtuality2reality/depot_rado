@@ -1,4 +1,6 @@
 DepotRado::Application.routes.draw do
+  resources :payments
+
   resources :orders
 
   resources :line_items

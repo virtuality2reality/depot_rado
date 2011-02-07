@@ -25,9 +25,10 @@
   </div>
   <div class="field">
     <%= f.label :pay_type %><br />
-    <%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => 'Select a payment method' %>
+    <%= f.select :pay_type, @payment_type.map {|u| [u.payment_type,u.payment_type]}, :prompt => 'Select a payment method' %>
   </div>
   <div class="actions">
     <%= f.submit 'Place Order' %>
   </div>
+  
 <% end %>

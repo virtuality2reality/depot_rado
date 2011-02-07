@@ -26,6 +26,8 @@ class OrdersController < ApplicationController
   # GET /orders/new.xml
   def new
     @cart = current_cart
+    @display = true
+    @payment_type = Payment.find(:all)
     if @cart.line_items.empty?
       redirect_to store_url, :notice => "Your cart is empty"
       return
@@ -49,11 +51,12 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(current_cart)
-
+    @payment_type = Payment.find(:all)
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice => 'Thank you for your order.') }        
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else

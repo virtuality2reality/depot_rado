@@ -45,3 +45,7 @@ Product.create(:title => 'Rails Test Prescriptions',
       </p>},
   :image_url => '/images/rtp.jpg',
   :price => 43.75)
+  
+#Payment.create(:payment_type => 'Check')
+#Payment.create(:payment_type => 'Credit card')
+#Payment.create(:payment_type => 'Purchase order')
