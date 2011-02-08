@@ -17,8 +17,14 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.order_shipped.subject
   #
-  def order_shipped
+  def order_shipped(order)
     @order = order
     mail :to => order.email, :subject => 'Pragmatic Store Order Shipped'    
   end
+  
+  def error_occured(error)
+    @cart_id = error
+    mail :to => "rado.rakotobe@gmail.com", :subject => 'Pragmatic Store Error'    
+  end
+  
 end

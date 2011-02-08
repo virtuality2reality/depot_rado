@@ -93,4 +93,20 @@ class OrdersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def ship_order    
+    @order = Order.find(params[:id])
+    @order.ship_date = Time.now
+    respond_to do |format|
+      if @order.save
+        Notifier.order_shipped(@order).deliver      
+        format.html { redirect_to(store_url, :notice => 'Order shipped.') }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(store_url, :notice => 'Order not shipped.') }
+        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
 end
